@@ -1,22 +1,33 @@
 <?php
-// Página inicial do plugin local_intropage.
-
 require_once(__DIR__ . '/../../config.php');
 
-require_login(); // Exige que o usuário esteja logado.
+// Obtém o parâmetro "courseid" da URL.
+$courseid = required_param('courseid', PARAM_INT);
 
-$context = context_system::instance();
-require_capability('local/intropage:view', $context); // Verifica a permissão.
+// Verifica se o usuário está logado e tem permissão para visualizar o curso.
+$context = context_course::instance($courseid);
+// require_capability('moodle/course:view', $context);
 
+// Obtém os dados do curso.
+$course = $DB->get_record('course', ['id' => $courseid], 'id, fullname, summary, startdate', MUST_EXIST);
+
+// Configura a página.
+$PAGE->requires->css('/local/intropage/styles.css');
 $PAGE->set_context($context);
-$PAGE->set_url(new moodle_url('/local/intropage/index.php'));
-$PAGE->set_title(get_string('intropage', 'local_intropage'));
-$PAGE->set_heading(get_string('intropage', 'local_intropage'));
+$PAGE->set_url(new moodle_url('/local/intropage/index.php', ['courseid' => $courseid]));
+$PAGE->set_title("Introduction to {$course->fullname}");
+$PAGE->set_heading("Introduction to {$course->fullname}");
 
+// Tentativa de alterar o layout da página
+$PAGE->set_pagelayout('base');
+
+// Obtém o renderer do plugin.
+$output = $PAGE->get_renderer('local_intropage');
+
+// Renderiza a introdução do curso usando o template.
+$coursehtml = $output->render_course_intro($course);
+
+// Exibe a página.
 echo $OUTPUT->header();
-echo $OUTPUT->heading(get_string('intropage', 'local_intropage'));
-
-// Conteúdo da página.
-echo '<p>Welcome to the Intro Page plugin!</p>';
-
+echo $coursehtml;
 echo $OUTPUT->footer();

@@ -1,11 +1,26 @@
-.course-title {
-  font-size: 1.5em;
-  font-weight: bold;
-  margin-bottom: 10px;
+.course-intro {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
-.course-description {
-  font-size: 1.2em;
-  line-height: 1.6;
-  color: #555;
+.course-intro h2 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+}
+
+.course-summary {
+  margin-bottom: 15px;
+}
+
+.course-details p {
+  font-size: 1em;
+  margin: 5px 0;
+}
+
+/* Esconder a segunda barra de navegação*/
+.secondary-navigation {
+  display: none;
 }
