@@ -17,7 +17,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_intropage'; // Nome do plugin.
-$plugin->version   = 2024112501;       // Data no formato YYYYMMDDXX.
+$plugin->version   = 2024112503;       // Data no formato YYYYMMDDXX.
 $plugin->release   = '0.1';            // Versão do plugin.
 $plugin->requires  = 2023111300;       // Versão mínima do Moodle (4.4).
 $plugin->maturity  = MATURITY_STABLE;  // Maturidade do plugin.

@@ -20,7 +20,6 @@
   margin: 5px 0;
 }
 
-/* Esconder a segunda barra de navegação*/
-.secondary-navigation {
+body.local-intropage-intro .secondary-navigation {
   display: none;
 }

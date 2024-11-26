@@ -6,7 +6,6 @@ $courseid = required_param('courseid', PARAM_INT);
 
 // Verifica se o usuário está logado e tem permissão para visualizar o curso.
 $context = context_course::instance($courseid);
-// require_capability('moodle/course:view', $context);
 
 // Obtém os dados do curso.
 $course = $DB->get_record('course', ['id' => $courseid], 'id, fullname, summary, startdate', MUST_EXIST);
@@ -20,6 +19,9 @@ $PAGE->set_heading("Introduction to {$course->fullname}");
 
 // Tentativa de alterar o layout da página
 $PAGE->set_pagelayout('base');
+
+// Adiciona uma classe CSS personalizada ao <body>.
+$PAGE->add_body_class('local-intropage-intro');
 
 // Obtém o renderer do plugin.
 $output = $PAGE->get_renderer('local_intropage');

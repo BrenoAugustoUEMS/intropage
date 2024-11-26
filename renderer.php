@@ -22,32 +22,48 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
- defined('MOODLE_INTERNAL') || die();
+defined('MOODLE_INTERNAL') || die();
 
- class local_intropage_renderer extends plugin_renderer_base {
-     /**
-      * Renderiza a introdução do curso usando um template.
-      *
-      * @param stdClass $course Dados do curso (id, fullname, summary, startdate).
-      * @return string O HTML renderizado.
-      */
-     public function render_course_intro($course) {
-         global $DB;
- 
-         // Prepara os dados adicionais.
-         $context = context_course::instance($course->id);
-         $enrolledusers = count_enrolled_users($context); // Conta os usuários inscritos.
-         $startdate = userdate($course->startdate); // Converte a data para o formato do usuário.
- 
-         // Prepara os dados para o template.
-         $data = [
-             'fullname' => $course->fullname, // Nome completo do curso.
-             'summary' => format_text($course->summary), // Resumo formatado.
-             'startdate' => $startdate, // Data de início formatada.
-             'enrolledusers' => $enrolledusers, // Número de usuários inscritos.
-         ];
- 
-         // Renderiza o template 'course_intro'.
-         return $this->render_from_template('local_intropage/course_intro', $data);
-     }
- }
+class local_intropage_renderer extends plugin_renderer_base {
+    public function render_course_intro($course) {
+        global $DB;
+
+        // Prepara o contexto do curso.
+        $context = context_course::instance($course->id);
+
+        // Conta o número de usuários inscritos.
+        $enrolledusers = count_enrolled_users($context);
+
+        // Formata a data de início do curso.
+        $startdate = userdate($course->startdate);
+
+        // Busca os campos personalizados para este curso.
+        $customfield_handler = \core_customfield\handler::get_handler('core_course', 'course');
+        $customfields_data = $customfield_handler->get_instance_data($course->id, true);
+
+        $difficulty = null; // Valor padrão se o campo não existir.
+
+        // Itera sobre os campos personalizados para encontrar o "difficulty".
+        foreach ($customfields_data as $field) {
+            if ($field->get_field()->get('shortname') === 'difficulty') {
+                $valueid = $field->get('value'); // Obtém o ID do valor (número).
+                
+                // Obtém o texto legível associado ao ID.
+                $options = $field->get_field()->get_options(); // Retorna todas as opções do menu suspenso.
+                $difficulty = $options[$valueid] ?? null; // Busca o texto correspondente ao ID.
+                break;
+            }
+        }
+
+        // Prepara os dados para o template.
+        $data = [
+            'fullname' => $course->fullname,
+            'summary' => format_text($course->summary),
+            'startdate' => $startdate,
+            'enrolledusers' => $enrolledusers,
+            'difficulty' => $difficulty, // Adiciona o nível de dificuldade ao template.
+        ];
+
+        return $this->render_from_template('local_intropage/course_intro', $data);
+    }
+}
