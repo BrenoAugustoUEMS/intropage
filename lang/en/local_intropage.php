@@ -16,7 +16,10 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-// Strings for the plugin.
-$string['pluginname'] = 'Intro Page'; // Nome do plugin.
+// Este arquivo contém strings usadas pelo plugin local_intropage.
+
+$string['pluginname'] = 'Intro Page'; // Nome do plugin (usado no menu e na navegação).
+$string['intropage'] = 'Intro Page'; // Título exibido na página inicial do plugin.
+$string['welcome_message'] = 'Welcome to the Intro Page plugin!'; // Mensagem de boas-vindas.
 $string['example'] = 'Example setting'; // Texto para a configuração de exemplo.
 $string['example_desc'] = 'This is an example setting description.'; // Descrição da configuração de exemplo.
