@@ -1,25 +1,79 @@
+/* Estilo principal do container da introdução do curso */
 .course-intro {
+  display: flex; /* Layout de colunas lado a lado */
+  flex-direction: row;
+  gap: 20px; /* Espaçamento entre as colunas */
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.course-intro h2 {
-  font-size: 1.8em;
-  margin-bottom: 15px;
+/* Coluna principal: título e descrição */
+.course-intro .course-main {
+  display: flex;
+  flex-direction: column; /* Garante alinhamento vertical */
+  flex-wrap: wrap; /* Permite que elementos se ajustem em telas menores */
+  align-items: flex-start; /* Alinha os itens à esquerda */
 }
 
-.course-summary {
-  margin-bottom: 15px;
+/* Estilo do título */
+.course-main h2 {
+  font-size: 2em;
+  margin: 0 0 15px; /* Remove margem superior e espaçamento inferior */
+  color: #333;
 }
 
-.course-details p {
-  font-size: 1em;
-  margin: 5px 0;
+/* Estilo da descrição/resumo do curso */
+.course-main .course-summary {
+  margin: 0 0 20px; /* Espaçamento inferior para separar do próximo elemento */
+  font-size: 1.1em;
+  line-height: 1.6; /* Melhora a legibilidade */
+  color: #555;
+  width: 100%; /* Garante que a descrição ocupe toda a largura da coluna */
 }
 
+/* Coluna lateral: detalhes adicionais (ícones e textos) */
+.course-sidebar {
+  display: flex;
+  flex-direction: column; /* Organiza os elementos verticalmente */
+  gap: 10px; /* Espaçamento entre os itens */
+}
+
+/* Estilo dos parágrafos na coluna lateral */
+.course-sidebar p {
+  font-size: 1.1em;
+  display: flex; /* Alinha ícone e texto na mesma linha */
+  align-items: center; /* Centraliza verticalmente o ícone e o texto */
+  color: #444;
+}
+
+/* Ícones FontAwesome na coluna lateral */
+.course-sidebar p i {
+  margin-right: 10px; /* Espaçamento entre ícone e texto */
+  font-size: 1.5em;
+  color: #0073e6; /* Azul destacado para os ícones */
+}
+
+/* Texto forte (label) na coluna lateral */
+.course-sidebar p strong {
+  margin-right: 5px;
+  color: #333; /* Cor mais escura para contraste */
+}
+
+/* Esconde a barra de navegação secundária na página local */
 body.local-intropage-intro .secondary-navigation {
   display: none;
+}
+
+@media (max-width: 768px) {
+  .course-intro {
+    flex-direction: column; /* Alinha as colunas verticalmente */
+  }
+
+  .course-sidebar {
+    margin-top: 20px; /* Adiciona espaçamento entre as colunas empilhadas */
+  }
 }

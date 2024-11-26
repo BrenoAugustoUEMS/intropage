@@ -25,15 +25,23 @@
 }}
 
 <div class="course-intro">
-    <h2>{{fullname}}</h2>
-    <div class="course-summary">
-        {{{summary}}}
+    <div class="course-main">
+        <h2>{{fullname}}</h2>
+        <div class="course-summary">
+            {{{summary}}}
+        </div>
     </div>
-    <div class="course-details">
-        <p><strong>Start Date:</strong> {{startdate}}</p>
-        <p><strong>Enrolled Users:</strong> {{enrolledusers}}</p>
+    <div class="course-sidebar">
+        <p>
+            <i class="fa fa-calendar"></i> <strong>Start Date:</strong> {{startdate}}
+        </p>
+        <p>
+            <i class="fa fa-users"></i> <strong>Enrolled Users:</strong> {{enrolledusers}}
+        </p>
         {{#difficulty}}
-        <p><strong>Difficulty Level:</strong> {{difficulty}}</p>
+        <p>
+            <i class="fa fa-signal"></i> <strong>Difficulty Level:</strong> {{difficulty}}
+        </p>
         {{/difficulty}}
     </div>
 </div>
