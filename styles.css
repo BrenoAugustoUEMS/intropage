@@ -63,6 +63,35 @@ body.local-intropage-intro #page-header {
   color: #555;
 }
 
+/* ---------------------------------------------------- SEÇÃO ODS ---------------------------------------------------- */
+
+/* Seção dos Selos da ODS */
+.intropage-ods-section {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.intropage-ods-section h3 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.intropage-ods-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: start;
+  align-items: center;
+}
+
+.ods-badge {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
 /* ---------------------------------------------------- COLUNA LATERAL (SIDEBAR) ----------------------------------------------- */
 
 /* Layout da barra lateral */
