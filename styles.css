@@ -22,51 +22,45 @@ body.local-intropage-intro #page-header {
 /* Estilo do cabeçalho da introdução */
 .intropage-header {
   display: flex;
-  align-items: center; /* Centraliza o texto verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center;
+  justify-content: center;
   color: #fff;
-  background: linear-gradient(to right, #333, #222); /* Gradiente de fundo */
+  background: linear-gradient(to right, #333, #222);
   padding: 100px 120px;
   margin-bottom: 20px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center; /* Garante centralização do texto */
+  text-align: center;
 }
 
 /* Container principal (conteúdo e barra lateral) */
 .intropage-content {
-  display: flex; /* Layout de colunas lado a lado */
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 20px; /* Espaçamento entre as colunas */
+  gap: 20px;
   padding: 20px;
-  margin: 0 auto 20px; /* Centraliza o conteúdo e adiciona margem inferior */
-  max-width: 1200px; /* Define uma largura máxima */
-  height: fit-content;
+  margin: 0 auto 20px;
+  max-width: 1200px;
 }
 
 /* ------------------------------------------------------- COLUNA PRINCIPAL ---------------------------------------------------- */
 
 /* Título da introdução */
 .intropage-main {
-  background-color: #f1f1f1; /* Fundo claro */
-  border: 1px solid #ddd; /* Borda leve */
+  flex: 3;
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
   padding: 15px;
-  border-radius: 8px; /* Bordas arredondadas */
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve */
-}
-
-/* Resumo/descrição */
-.intropage-title {
-  margin-bottom: 2em;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Resumo/descrição */
 .intropage-summary {
-  margin: 0 0 20px; /* Espaçamento inferior */
+  margin-bottom: 20px;
   font-size: 1.1em;
-  line-height: 1.6; /* Melhora a legibilidade */
+  line-height: 1.6;
   color: #555;
-  width: 100%; /* Garante que a descrição ocupe toda a largura */
 }
 
 /* ---------------------------------------------------- COLUNA LATERAL (SIDEBAR) ----------------------------------------------- */
@@ -74,49 +68,48 @@ body.local-intropage-intro #page-header {
 /* Layout da barra lateral */
 .intropage-sidebar {
   display: flex;
-  flex-direction: column; /* Organiza os elementos verticalmente */
-  gap: 10px; /* Espaçamento entre os itens */
-  height: fit-content;
-  background-color: #f1f1f1; /* Fundo claro */
-  border: 1px solid #ddd; /* Borda leve */
-  padding: 15px;
-  border-radius: 8px; /* Bordas arredondadas */
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  flex: 2;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilo geral dos itens na barra lateral */
 .intropage-info-item {
   font-size: 1.1em;
   color: #444;
-  margin-bottom: 15px;
-  line-height: 1.4; /* Altura suficiente para múltiplas linhas */
+  line-height: 1.4;
 }
 
 /* Estilo do contêiner de ícone e texto */
 .intropage-icon-text {
-  display: flex; /* Alinha o ícone e o texto na horizontal */
-  align-items: center; /* Centraliza verticalmente o ícone e o texto */
-  gap: 10px; /* Espaçamento entre o ícone e o texto */
-  margin-bottom: 5px; /* Espaço entre o ícone-texto e o texto descritivo */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
 }
 
 /* Estilo do ícone */
 .intropage-icon-text i {
-  font-size: 1.5em; /* Tamanho maior para destaque */
-  color: #333; /* Cor do ícone */
+  font-size: 1.5em;
+  color: #333;
 }
 
 /* Estilo do strong */
 .intropage-icon-text strong {
   font-weight: bold;
-  color: #222; /* Cor mais escura para contraste */
+  color: #222;
 }
 
 /* Estilo do texto subsequente */
 .intropage-info-item span {
-  display: block; /* Garante que o texto descritivo fique em uma nova linha */
-  color: #666; /* Cor do texto descritivo */
-  margin-top: 4px; /* Espaço entre o texto principal e o texto descritivo */
+  display: block;
+  color: #666;
+  margin-top: 4px;
 }
 
 /* ---------------------------------------------------- BOTÃO NA SIDEBAR ------------------------------------------------------- */
@@ -124,49 +117,37 @@ body.local-intropage-intro #page-header {
 .intropage-button-collection {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 /* Botão estilizado */
 .intropage-button {
-  display: inline-flex; /* Usa flex para alinhar texto e ícone */
-  align-items: center; /* Centraliza verticalmente texto e ícone */
-  justify-content: space-between; /* Centraliza conteúdo no botão */
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 2rem;
-  background-color: #333; /* Fundo preto */
-  color: #fff; /* Texto branco */
-  padding: 10px 15px; /* Espaçamento interno */
-  font-size: 1em; /* Tamanho do texto */
-  text-decoration: none; /* Remove sublinhado do link */
-  border-radius: 5px; /* Bordas arredondadas */
-  line-height: 1; /* Garante altura consistente */
-  vertical-align: middle; /* Alinha no meio quando fora de flex */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Transição suave */
+  background-color: #333;
+  color: #fff !important;
+  font-weight: bold;
+  padding: 10px 15px;
+  font-size: 1.2em;
+  text-decoration: none !important;
+  border-radius: 5px;
+  transition: background-color 0.5s ease, transform 0.5s ease;
 }
 
 /* Ícones dentro do botão */
 .intropage-button i {
-  font-size: 2.2em; /* Tamanho do ícone */
-  line-height: 1; /* Altura consistente com o texto */
-  vertical-align: middle; /* Garante alinhamento com o texto */
+  font-size: 2.2em;
+  line-height: 1;
   padding: 0 0.5em;
 }
 
-/* Botão: hover (quando o mouse passa por cima) */
+/* Botão: hover */
 .intropage-button:hover {
-  color: #fff !important;
-  background-color: #222; /* Fundo preto mais escuro */
-  transform: scale(1.05); /* Leve aumento no tamanho para efeito visual */
-  text-decoration: none; /* Garante que o texto continue sem sublinhado */
-}
-
-/* Remove comportamento padrão de link ao focar (focus/active) */
-.intropage-button:focus,
-.intropage-button:active {
-  text-decoration: none; /* Garante que não haja sublinhado */
-  outline: none; /* Remove a borda de foco padrão do navegador */
+  background-color: #222;
+  transform: scale(1.02);
 }
 
 /* ----------------------------------------------------- RESPONSIVIDADE ------------------------------------------------------- */
@@ -174,14 +155,11 @@ body.local-intropage-intro #page-header {
 /* Empilha as colunas em telas menores */
 @media (max-width: 768px) {
   .intropage-content {
-    flex-direction: column-reverse; /* Alinha as colunas verticalmente */
-  }
-
-  .intropage-sidebar {
-    margin-top: 20px; /* Espaçamento superior entre as colunas empilhadas */
+    flex-direction: column-reverse;
   }
 
   .intropage-header {
-    padding: 40px 20px; /* Reduz o tamanho do cabeçalho */
+    margin: 0;
+    padding: 40px 20px;
   }
 }
