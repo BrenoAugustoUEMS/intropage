@@ -31,9 +31,6 @@ class local_intropage_renderer extends plugin_renderer_base {
         // Prepara o contexto do curso.
         $context = context_course::instance($course->id);
 
-        // Conta o número de usuários inscritos.
-        $enrolledusers = count_enrolled_users($context);
-
         // Formata a data de início do curso.
         $startdate = userdate($course->startdate);
 
@@ -41,27 +38,12 @@ class local_intropage_renderer extends plugin_renderer_base {
         $customfield_handler = \core_customfield\handler::get_handler('core_course', 'course');
         $customfields_data = $customfield_handler->get_instance_data($course->id, true);
 
-        $difficulty = null; // Valor padrão se o campo não existir.
-
-        // Itera sobre os campos personalizados para encontrar o "difficulty".
-        foreach ($customfields_data as $field) {
-            if ($field->get_field()->get('shortname') === 'difficulty') {
-                $valueid = $field->get('value'); // Obtém o ID do valor (número).
-                
-                // Obtém o texto legível associado ao ID.
-                $options = $field->get_field()->get_options(); // Retorna todas as opções do menu suspenso.
-                $difficulty = $options[$valueid] ?? null; // Busca o texto correspondente ao ID.
-                break;
-            }
-        }
 
         // Prepara os dados para o template.
         $data = [
             'fullname' => $course->fullname,
             'summary' => format_text($course->summary),
             'startdate' => $startdate,
-            'enrolledusers' => $enrolledusers,
-            'difficulty' => $difficulty, // Adiciona o nível de dificuldade ao template.
         ];
 
         return $this->render_from_template('local_intropage/course_intro', $data);
