@@ -14,8 +14,8 @@ $course = $DB->get_record('course', ['id' => $courseid], 'id, fullname, summary,
 $PAGE->requires->css('/local/intropage/styles.css');
 $PAGE->set_context($context);
 $PAGE->set_url(new moodle_url('/local/intropage/index.php', ['courseid' => $courseid]));
-$PAGE->set_title("Introduction to {$course->fullname}");
-$PAGE->set_heading("Introduction to {$course->fullname}");
+$PAGE->set_title("Introdução a {$course->fullname}");
+
 
 // Tentativa de alterar o layout da página
 $PAGE->set_pagelayout('base');

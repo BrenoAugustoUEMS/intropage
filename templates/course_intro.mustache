@@ -15,16 +15,45 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 
-<div class="course-intro">
-    <div class="course-main">
-        <h2>{{fullname}}</h2>
-        <div class="course-summary">
+<div class="intropage-header">
+    <h1>{{fullname}}</h1>
+</div>
+
+<div class="intropage-content">
+    <div class="intropage-main">
+        <div class="intropage-title">
+            <h2>Detalhes</h2>
+        </div>
+        <div class="intropage-summary">
             {{{summary}}}
         </div>
     </div>
-    <div class="course-sidebar">
-        <p>
-            <i class="fa fa-calendar"></i> <strong>Start Date:</strong> {{startdate}}
-        </p>
+    <div class="intropage-sidebar">
+        <!-- Botão com URL externa -->
+        <div class="intropage-button-collection">
+            <a href="https://www.uems.br" class="intropage-button" target="_blank">
+                <span>Acesse o Edital</span> <i class="fa-solid fa-file-alt"></i>
+            </a>
+            <a href="https://www.uems.br" class="intropage-button" target="_blank">
+                <span>Inscreva-se</span><i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+        </div>
+        <!-- Informações de inscrição -->
+        <div class="intropage-info-item">
+            <div class="intropage-icon-text">
+                <i class="fa-solid fa-calendar-alt"></i>
+                <strong>Inscrições:</strong>
+            </div>
+            <span>De 01/01/2024 até 15/01/2024</span>
+        </div>
+
+        <!-- Público-alvo -->
+        <div class="intropage-info-item">
+            <div class="intropage-icon-text">
+                <i class="fa-solid fa-users"></i>
+                <strong>Público-Alvo:</strong>
+            </div>
+            <span>Professores da rede estadual de ensino</span>
+        </div>
     </div>
 </div>

@@ -1,79 +1,187 @@
-/* Estilo principal do container da introdução do curso */
-.course-intro {
+/* ------------------------------------------------------- RESET DO TEMA ------------------------------------------------------- */
+
+/* Remove margens e paddings padrões do tema para a página do plugin */
+body.local-intropage-intro .main-inner {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body.local-intropage-intro #page.drawers,
+body.local-intropage-intro div[role="main"] {
+  padding: 0 !important;
+}
+
+/* Esconde e limpa a barra de navegação secundária e o cabeçalho */
+body.local-intropage-intro .secondary-navigation,
+body.local-intropage-intro #page-header {
+  display: none;
+}
+
+/* ------------------------------------------------------- LAYOUT ---------------------------------------------------- */
+
+/* Estilo do cabeçalho da introdução */
+.intropage-header {
+  display: flex;
+  align-items: center; /* Centraliza o texto verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  color: #fff;
+  background: linear-gradient(to right, #333, #222); /* Gradiente de fundo */
+  padding: 100px 120px;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Garante centralização do texto */
+}
+
+/* Container principal (conteúdo e barra lateral) */
+.intropage-content {
   display: flex; /* Layout de colunas lado a lado */
   flex-direction: row;
   justify-content: space-between;
   gap: 20px; /* Espaçamento entre as colunas */
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
   padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 auto 20px; /* Centraliza o conteúdo e adiciona margem inferior */
+  max-width: 1200px; /* Define uma largura máxima */
+  height: fit-content;
 }
 
-/* Coluna principal: título e descrição */
-.course-intro .course-main {
-  display: flex;
-  flex-direction: column; /* Garante alinhamento vertical */
-  flex-wrap: wrap; /* Permite que elementos se ajustem em telas menores */
+/* ------------------------------------------------------- COLUNA PRINCIPAL ---------------------------------------------------- */
+
+/* Título da introdução */
+.intropage-main {
+  background-color: #f1f1f1; /* Fundo claro */
+  border: 1px solid #ddd; /* Borda leve */
+  padding: 15px;
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve */
 }
 
-/* Estilo do título */
-.course-main h2 {
-  font-size: 2em;
-  margin: 0 0 15px; /* Remove margem superior e espaçamento inferior */
-  color: #333;
+/* Resumo/descrição */
+.intropage-title {
+  margin-bottom: 2em;
 }
 
-/* Estilo da descrição/resumo do curso */
-.course-main .course-summary {
-  margin: 0 0 20px; /* Espaçamento inferior para separar do próximo elemento */
+/* Resumo/descrição */
+.intropage-summary {
+  margin: 0 0 20px; /* Espaçamento inferior */
   font-size: 1.1em;
   line-height: 1.6; /* Melhora a legibilidade */
   color: #555;
-  width: 100%; /* Garante que a descrição ocupe toda a largura da coluna */
+  width: 100%; /* Garante que a descrição ocupe toda a largura */
 }
 
-/* Coluna lateral: detalhes adicionais (ícones e textos) */
-.course-sidebar {
+/* ---------------------------------------------------- COLUNA LATERAL (SIDEBAR) ----------------------------------------------- */
+
+/* Layout da barra lateral */
+.intropage-sidebar {
   display: flex;
   flex-direction: column; /* Organiza os elementos verticalmente */
   gap: 10px; /* Espaçamento entre os itens */
+  height: fit-content;
+  background-color: #f1f1f1; /* Fundo claro */
+  border: 1px solid #ddd; /* Borda leve */
+  padding: 15px;
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve */
 }
 
-/* Estilo dos parágrafos na coluna lateral */
-.course-sidebar p {
+/* Estilo geral dos itens na barra lateral */
+.intropage-info-item {
   font-size: 1.1em;
-  display: flex; /* Alinha ícone e texto na mesma linha */
-  align-items: center; /* Centraliza verticalmente o ícone e o texto */
   color: #444;
+  margin-bottom: 15px;
+  line-height: 1.4; /* Altura suficiente para múltiplas linhas */
 }
 
-/* Ícones FontAwesome na coluna lateral */
-.course-sidebar p i {
-  margin-right: 10px; /* Espaçamento entre ícone e texto */
-  font-size: 1.5em;
-  color: #0073e6; /* Azul destacado para os ícones */
+/* Estilo do contêiner de ícone e texto */
+.intropage-icon-text {
+  display: flex; /* Alinha o ícone e o texto na horizontal */
+  align-items: center; /* Centraliza verticalmente o ícone e o texto */
+  gap: 10px; /* Espaçamento entre o ícone e o texto */
+  margin-bottom: 5px; /* Espaço entre o ícone-texto e o texto descritivo */
 }
 
-/* Texto forte (label) na coluna lateral */
-.course-sidebar p strong {
-  margin-right: 5px;
-  color: #333; /* Cor mais escura para contraste */
+/* Estilo do ícone */
+.intropage-icon-text i {
+  font-size: 1.5em; /* Tamanho maior para destaque */
+  color: #333; /* Cor do ícone */
 }
 
-/* Esconde a barra de navegação secundária na página local */
-body.local-intropage-intro .secondary-navigation {
-  display: none;
+/* Estilo do strong */
+.intropage-icon-text strong {
+  font-weight: bold;
+  color: #222; /* Cor mais escura para contraste */
 }
 
+/* Estilo do texto subsequente */
+.intropage-info-item span {
+  display: block; /* Garante que o texto descritivo fique em uma nova linha */
+  color: #666; /* Cor do texto descritivo */
+  margin-top: 4px; /* Espaço entre o texto principal e o texto descritivo */
+}
+
+/* ---------------------------------------------------- BOTÃO NA SIDEBAR ------------------------------------------------------- */
+
+.intropage-button-collection {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* Botão estilizado */
+.intropage-button {
+  display: inline-flex; /* Usa flex para alinhar texto e ícone */
+  align-items: center; /* Centraliza verticalmente texto e ícone */
+  justify-content: space-between; /* Centraliza conteúdo no botão */
+  gap: 2rem;
+  background-color: #333; /* Fundo preto */
+  color: #fff; /* Texto branco */
+  padding: 10px 15px; /* Espaçamento interno */
+  font-size: 1em; /* Tamanho do texto */
+  text-decoration: none; /* Remove sublinhado do link */
+  border-radius: 5px; /* Bordas arredondadas */
+  line-height: 1; /* Garante altura consistente */
+  vertical-align: middle; /* Alinha no meio quando fora de flex */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transição suave */
+}
+
+/* Ícones dentro do botão */
+.intropage-button i {
+  font-size: 2.2em; /* Tamanho do ícone */
+  line-height: 1; /* Altura consistente com o texto */
+  vertical-align: middle; /* Garante alinhamento com o texto */
+  padding: 0 0.5em;
+}
+
+/* Botão: hover (quando o mouse passa por cima) */
+.intropage-button:hover {
+  color: #fff !important;
+  background-color: #222; /* Fundo preto mais escuro */
+  transform: scale(1.05); /* Leve aumento no tamanho para efeito visual */
+  text-decoration: none; /* Garante que o texto continue sem sublinhado */
+}
+
+/* Remove comportamento padrão de link ao focar (focus/active) */
+.intropage-button:focus,
+.intropage-button:active {
+  text-decoration: none; /* Garante que não haja sublinhado */
+  outline: none; /* Remove a borda de foco padrão do navegador */
+}
+
+/* ----------------------------------------------------- RESPONSIVIDADE ------------------------------------------------------- */
+
+/* Empilha as colunas em telas menores */
 @media (max-width: 768px) {
-  .course-intro {
-    flex-direction: column; /* Alinha as colunas verticalmente */
+  .intropage-content {
+    flex-direction: column-reverse; /* Alinha as colunas verticalmente */
   }
 
-  .course-sidebar {
-    margin-top: 20px; /* Adiciona espaçamento entre as colunas empilhadas */
+  .intropage-sidebar {
+    margin-top: 20px; /* Espaçamento superior entre as colunas empilhadas */
+  }
+
+  .intropage-header {
+    padding: 40px 20px; /* Reduz o tamanho do cabeçalho */
   }
 }
