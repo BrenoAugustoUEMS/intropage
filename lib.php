@@ -116,3 +116,30 @@ function local_intropage_get_ods_field($courseid) {
 
     return $ods_numbers;
 }
+
+
+/**
+ * Obtém o valor do campo personalizado "edital_url" associado a um curso.
+ *
+ * @param int $courseid O ID do curso.
+ * @return string|null A URL do edital ou NULL se o campo não estiver configurado.
+ */
+function local_intropage_get_edital_url($courseid) {
+    // Obtém o manipulador de campos personalizados para cursos.
+    $customfield_handler = \core_customfield\handler::get_handler('core_course', 'course');
+
+    // Obtém os dados personalizados para este curso.
+    $customfields_data = $customfield_handler->get_instance_data($courseid, true);
+
+    // Itera pelos campos para encontrar o campo "edital_url".
+    foreach ($customfields_data as $data) {
+        // Verifica se o campo tem o nome curto "edital_url".
+        if ($data->get_field()->get('shortname') === 'edital_url') {
+            // Retorna o valor do campo "edital_url".
+            return $data->get_value();
+        }
+    }
+
+    // Retorna NULL se o campo "edital_url" não for encontrado.
+    return null;
+}

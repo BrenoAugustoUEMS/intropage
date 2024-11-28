@@ -38,6 +38,10 @@ class local_intropage_renderer extends plugin_renderer_base {
         // Busca os números do campo ODS.
         $ods_numbers = local_intropage_get_ods_field($course->id);
 
+        // Busca a URL do campo Edital.
+        $edital_url = local_intropage_get_edital_url($course->id);
+
+
         // Prepara os dados para o template.
         $data = [
             'fullname' => $course->fullname,
@@ -46,6 +50,7 @@ class local_intropage_renderer extends plugin_renderer_base {
             'enrolend' => $enroldates['enrolend'],
             'categoryname' => $categoryname,
             'ods_numbers' => $ods_numbers,
+            'edital_url' => $edital_url,
             'pluginbaseurl' => (new moodle_url('/local/intropage'))->out(),
         ];
 

@@ -93,9 +93,16 @@
     <div class="intropage-sidebar">
         <!-- Botão com URL externa -->
         <div class="intropage-button-collection">
-            <a href="https://www.uems.br" class="intropage-button bg-light border" target="_blank">
+            {{#edital_url}}
+            <a href="{{edital_url}}" class="intropage-button bg-light border" target="_blank">
                 <span class="text-dark">Edital</span> <i class="fa-solid fa-newspaper text-dark"></i>
             </a>
+            {{/edital_url}}
+            {{^edital_url}}
+            <div class="intropage-button bg-light border">
+                <span class="text-black-50">Edital Indisponível</span> <i class="fa-solid fa-newspaper text-black-50"></i>
+            </div>
+            {{/edital_url}}
             <a href="https://www.uems.br" class="intropage-button" target="_blank">
                 <span>Inscreva-se</span><i class="fa-solid fa-right-from-bracket"></i>
             </a>
@@ -109,6 +116,14 @@
                     <strong>Categoria:</strong>
                 </div>
                 <p class="intropage-info-text">{{categoryname}}</p>
+            </div>
+             <!-- Ações -->
+            <div class="intropage-info-item">
+                <div class="intropage-info-header">
+                    <i class="fa-solid fa-check"></i>
+                    <strong>Ações Contempladas:</strong>
+                </div>
+                <p class="intropage-info-text">Programa, Projeto, Curso e Evento</p>
             </div>
             <!-- Público-alvo -->
             <div class="intropage-info-item">
