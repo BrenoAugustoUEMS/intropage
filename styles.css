@@ -112,13 +112,14 @@ body.local-intropage-intro #page-header {
   gap: 1rem;
   justify-content: start;
   align-items: center;
-  padding-top: 2em;
+  padding-top: 1em;
 }
 
 .ods-badge {
   width: 100px;
   height: auto;
   object-fit: contain;
+  border-radius: 10px;
 }
 
 /* ---------------------------------------------------- COLUNA LATERAL (SIDEBAR) ----------------------------------------------- */
