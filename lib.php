@@ -74,3 +74,6 @@ function local_intropage_get_autoenrol_dates($courseid) {
         ];
     }
 }
+
+
+
