@@ -112,6 +112,7 @@ body.local-intropage-intro #page-header {
   gap: 1rem;
   justify-content: start;
   align-items: center;
+  padding-top: 2em;
 }
 
 .ods-badge {
@@ -143,24 +144,29 @@ body.local-intropage-intro #page-header {
 }
 
 /* Estilo do contêiner de ícone e texto */
-.intropage-icon-text {
+.intropage-info-header {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 0.5em 0;
+  padding: 0.3em 0;
   border-bottom: 1px solid var(--title-line);
 }
 
 /* Estilo do ícone */
-.intropage-icon-text i {
+.intropage-info-header i {
   font-size: 1.5em;
   color: var(--primary-color-dark);
 }
 
 /* Estilo do strong */
-.intropage-icon-text strong {
+.intropage-info-header strong {
   font-weight: bold;
   color: var(--primary-color-dark);
+}
+
+.intropage-info-text {
+  padding: 0.4em 0 1.4em 0.4em;
+  margin: 0;
 }
 
 .intropage-info-item {
