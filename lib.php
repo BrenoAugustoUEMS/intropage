@@ -75,5 +75,44 @@ function local_intropage_get_autoenrol_dates($courseid) {
     }
 }
 
+/**
+ * Obtém e processa o campo personalizado "ods" associado a um curso.
+ * Extrai os números e retorna apenas os que estão no intervalo de 1 a 17.
+ *
+ * @param int $courseid O ID do curso.
+ * @return array Um array contendo os números de 1 a 17 extraídos do campo "ods".
+ */
+function local_intropage_get_ods_field($courseid) {
+    // Obtém o manipulador de campos personalizados para cursos.
+    $customfield_handler = \core_customfield\handler::get_handler('core_course', 'course');
 
+    // Obtém os dados personalizados para este curso.
+    $customfields_data = $customfield_handler->get_instance_data($courseid, true);
 
+    // Inicializa o array para armazenar os números extraídos.
+    $ods_numbers = [];
+
+    // Itera pelos campos para encontrar o campo "ods".
+    foreach ($customfields_data as $data) {
+        // Verifica se o campo tem o nome curto "ods".
+        if ($data->get_field()->get('shortname') === 'ods') {
+            // Obtém o valor do campo "ods" como string.
+            $ods_value = $data->get_value();
+
+            // Divide a string em partes usando a vírgula como delimitador.
+            $ods_parts = explode(',', $ods_value);
+
+            // Remove espaços extras e converte para inteiros.
+            $ods_numbers = array_map('intval', array_map('trim', $ods_parts));
+
+            // Filtra apenas os números dentro do intervalo de 1 a 17.
+            $ods_numbers = array_filter($ods_numbers, function($num) {
+                return $num >= 1 && $num <= 17;
+            });
+
+            break; // Sai do loop após encontrar e processar o campo "ods".
+        }
+    }
+
+    return $ods_numbers;
+}

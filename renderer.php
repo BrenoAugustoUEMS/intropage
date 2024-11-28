@@ -35,6 +35,9 @@ class local_intropage_renderer extends plugin_renderer_base {
         // Busca as datas de autoinscrição.
         $enroldates = local_intropage_get_autoenrol_dates($course->id);
 
+        // Busca os números do campo ODS.
+        $ods_numbers = local_intropage_get_ods_field($course->id);
+
         // Prepara os dados para o template.
         $data = [
             'fullname' => $course->fullname,
@@ -42,6 +45,8 @@ class local_intropage_renderer extends plugin_renderer_base {
             'enrolstart' => $enroldates['enrolstart'],
             'enrolend' => $enroldates['enrolend'],
             'categoryname' => $categoryname,
+            'ods_numbers' => $ods_numbers,
+            'pluginbaseurl' => (new moodle_url('/local/intropage'))->out(),
         ];
 
         return $this->render_from_template('local_intropage/course_intro', $data);

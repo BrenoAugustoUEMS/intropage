@@ -76,10 +76,15 @@
                 <h3>Objetivos de Desenvolvimento Sustentável (ODS)</h3>
             </div>
             <div class="intropage-ods-badges">
-                <img src="https://prosas.com.br/img/icons/ods/pt/1.png" alt="Erradicação da Pobreza" class="ods-badge">
-                <img src="https://prosas.com.br/img/icons/ods/pt/4.png" alt="Educação de Qualidade" class="ods-badge">
-                <img src="https://prosas.com.br/img/icons/ods/pt/13.png" alt="Ação Contra a Mudança Global do Clima" class="ods-badge">
-                <!-- Adicione quantos selos forem necessários -->
+                {{#ods_numbers}}
+                    <div class="ods-badge">
+                        <img src="{{pluginbaseurl}}/pix/sdg/SDG-{{.}}.svg" alt="ODS {{.}}" class="ods-badge">
+                        <span>ODS {{.}}</span>
+                    </div>
+                {{/ods_numbers}}
+                {{^ods_numbers}}
+                    <p>Nenhum ODS informado.</p>
+                {{/ods_numbers}}
             </div>
         </div>
     </div>
