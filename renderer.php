@@ -38,12 +38,36 @@ class local_intropage_renderer extends plugin_renderer_base {
         $customfield_handler = \core_customfield\handler::get_handler('core_course', 'course');
         $customfields_data = $customfield_handler->get_instance_data($course->id, true);
 
+        // Busca informações de autoinscrição do curso.
+        $enrolmethod = $DB->get_record('enrol', [
+            'courseid' => $course->id,
+            'enrol' => 'self' // Filtra apenas pelo método de autoinscrição
+        ], 'enrolstartdate, enrolenddate');
+
+        // Verifica se há método de autoinscrição configurado.
+        if ($enrolmethod) {
+            // Converte as datas de timestamp para um formato legível ou define "Data não informada".
+            $enrolstart = $enrolmethod->enrolstartdate
+                ? userdate($enrolmethod->enrolstartdate, '%d/%m/%Y %H:%M')
+                : 'Data não informada';
+
+            $enrolend = $enrolmethod->enrolenddate
+                ? userdate($enrolmethod->enrolenddate, '%d/%m/%Y %H:%M')
+                : 'Data não informada';
+        } else {
+            // Caso não haja autoinscrição configurada.
+            $enrolstart = 'Data não informada';
+            $enrolend = 'Data não informada';
+        }
+
 
         // Prepara os dados para o template.
         $data = [
             'fullname' => $course->fullname,
             'summary' => format_text($course->summary),
             'startdate' => $startdate,
+            'enrolstart' => $enrolstart,
+            'enrolend' => $enrolend,
         ];
 
         return $this->render_from_template('local_intropage/course_intro', $data);
