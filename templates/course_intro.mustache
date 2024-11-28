@@ -20,17 +20,53 @@
 </div>
 
 <div class="intropage-content">
+
+    <!-- Main Content -->
+
     <div class="intropage-main">
-        <div class="intropage-summary-title">
-            <h2>Detalhes</h2>
-        </div>
-        <div class="intropage-summary">
-            {{{summary}}}
+        <!-- Inscrições -->
+        <div class="intropage-section d-flex">
+            <!-- Cabeçalho da seção -->
+            <div class="intropage-info-item">
+                <div class="intropage-icon-text mb-1">
+                    <i class="fa-solid fa-calendar-alt"></i>
+                    <strong>Inscrições:</strong>
+                </div>
+
+                <!-- Período de inscrições -->
+                <div class="d-flex flex-row flex-wrap intropage-enroll-date px-3 pt-3">
+                    <div class="d-flex align-items-center">
+                        <span class="text-muted mx-2 mb-2">De:</span>
+                        <strong class="h3 mr-5">01/01/2024 09:00</strong>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <span class="text-muted mx-2 mb-2">Até:</span>
+                        <strong class="h3">15/01/2024 17:00</strong>
+                    </div>
+                </div>
+
+                <!-- Legenda -->
+                <div class="intropage-legend text-muted fw-light mx-2">
+                    GMT-04 (Horário Padrão do MS)
+                </div>
+            </div>
         </div>
 
+
+        <!-- Detalhes -->
+        <div class="intropage-section">
+            <div class="intropage-title">
+                <h2>Detalhes</h2>
+            </div>
+            <div class="intropage-summary">
+                {{{summary}}}
+            </div>
+        </div>
         <!-- Selos da ODS -->
-        <div class="intropage-ods-section">
-            <h3>Contribuição aos Objetivos de Desenvolvimento Sustentável (ODS)</h3>
+        <div class="intropage-section">
+            <div class="intropage-title">
+                <h2>Objetivos de Desenvolvimento Sustentável (ODS)</h2>
+            </div>
             <div class="intropage-ods-badges">
                 <img src="https://prosas.com.br/img/icons/ods/pt/1.png" alt="Erradicação da Pobreza" class="ods-badge">
                 <img src="https://prosas.com.br/img/icons/ods/pt/4.png" alt="Educação de Qualidade" class="ods-badge">
@@ -39,54 +75,37 @@
             </div>
         </div>
     </div>
+
+    <!-- SIDEBAR -->    
+
     <div class="intropage-sidebar">
-
-        <!-- Informações de inscrição -->
-        <div class="intropage-info-item">
-            <div class="intropage-icon-text mb-1">
-                <i class="fa-solid fa-calendar-alt"></i>
-                <strong>Inscrições:</strong>
-            </div>
-
-            <div class="d-flex flex-wrap justify-content-start align-items-start p-3">
-                <div class="d-flex align-items-center" style="gap: 0.5rem; margin-right: 2em;">
-                    <span class="text-muted mb-2">De:</span>
-                    <strong class="h3">01/01/2024</strong>
-                </div>
-                <div class="d-flex align-items-center" style="gap: 0.5rem; margin-right: 2em;">
-                    <span class="text-muted mb-2">Até:</span>
-                    <strong class="h3">15/01/2024</strong>
-                </div>
-                <span class="text-muted small">GMT-04 (Horário Padrão do Amazonas)</span>
-            </div>
-        </div>
-
         <!-- Botão com URL externa -->
         <div class="intropage-button-collection">
-            <a href="https://www.uems.br" class="intropage-button" target="_blank">
-                <span>Acesse o Edital</span> <i class="fa-solid fa-newspaper"></i>
+            <a href="https://www.uems.br" class="intropage-button bg-light border" target="_blank">
+                <span class="text-dark">Edital</span> <i class="fa-solid fa-newspaper text-dark"></i>
             </a>
             <a href="https://www.uems.br" class="intropage-button" target="_blank">
                 <span>Inscreva-se</span><i class="fa-solid fa-right-from-bracket"></i>
             </a>
         </div>
 
-        <!-- Categoria -->
-        <div class="intropage-info-item">
-            <div class="intropage-icon-text">
-                <i class="fa-solid fa-cat"></i>
-                <strong>Categoria:</strong>
+        <div class="intropage-section m-0">
+            <!-- Categoria -->
+            <div class="intropage-info-item pb-4">
+                <div class="intropage-icon-text">
+                    <i class="fa-solid fa-cat"></i>
+                    <strong>Categoria:</strong>
+                </div>
+                <span>Extensão</span>
             </div>
-            <span>Extensão</span>
-        </div>
-
-        <!-- Público-alvo -->
-        <div class="intropage-info-item">
-            <div class="intropage-icon-text">
-                <i class="fa-solid fa-users"></i>
-                <strong>Público-Alvo:</strong>
+            <!-- Público-alvo -->
+            <div class="intropage-info-item pb-3">
+                <div class="intropage-icon-text">
+                    <i class="fa-solid fa-users"></i>
+                    <strong>Público-Alvo:</strong>
+                </div>
+                <span>Professores da rede estadual de ensino</span>
             </div>
-            <span>Professores da rede estadual de ensino</span>
         </div>
     </div>
 </div>

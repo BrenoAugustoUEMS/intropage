@@ -4,6 +4,7 @@
   --secondary-color: #444;
   --background-light: #f1f1f1;
   --border-color: #ddd;
+  --title-line: #33333333;
   --text-color-dark: #555;
   --text-color-muted: #666;
   --highlight-color: #fff;
@@ -44,8 +45,8 @@ body.local-intropage-intro #page-header {
     var(--primary-color-dark),
     var(--primary-color-darker)
   );
-  padding: 100px 120px;
-  margin-bottom: 20px;
+  padding: 90px 180px;
+  margin-bottom: 1em;
   box-shadow: var(--box-shadow-heavy);
   text-align: center;
 }
@@ -63,19 +64,27 @@ body.local-intropage-intro #page-header {
 
 /* ------------------------------------------------------- COLUNA PRINCIPAL ---------------------------------------------------- */
 
-/* Título da introdução */
+/* main container */
 .intropage-main {
-  flex: 3;
+  flex: 4;
+  margin: 0;
+  padding: 0;
+}
+
+/* Título da introdução */
+.intropage-section {
   background-color: var(--background-light);
   border: 1px solid var(--border-color);
   padding: 15px;
   border-radius: 8px;
   box-shadow: var(--box-shadow-light);
+  margin-bottom: 20px;
 }
 
 /* Detalhes título */
-.intropage-summary-title {
+.intropage-title {
   color: var(--primary-color-dark) !important;
+  border-bottom: 1px solid var(--title-line);
 }
 
 /* Resumo/descrição */
@@ -89,11 +98,6 @@ body.local-intropage-intro #page-header {
 /* ---------------------------------------------------- SEÇÃO ODS ---------------------------------------------------- */
 
 /* Seção dos Selos da ODS */
-.intropage-ods-section {
-  margin-top: 2rem;
-  padding: 1rem 0;
-  border-top: 1px solid var(--border-color);
-}
 
 .intropage-ods-section h3 {
   margin-bottom: 1rem;
@@ -121,14 +125,9 @@ body.local-intropage-intro #page-header {
 /* Layout da barra lateral */
 .intropage-sidebar {
   display: flex;
-  flex: 2;
+  flex: 1;
   flex-direction: column;
-  gap: 10px;
-  background-color: var(--background-light);
-  border: 1px solid var(--border-color);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: var(--box-shadow-light);
+  justify-content: flex-start;
 }
 
 /* Estilo geral dos itens na barra lateral */
@@ -138,12 +137,18 @@ body.local-intropage-intro #page-header {
   line-height: 1.4;
 }
 
+.intropage-legend {
+  font-size: x-small;
+  padding-left: 2em;
+}
+
 /* Estilo do contêiner de ícone e texto */
 .intropage-icon-text {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 5px;
+  padding: 0.5em 0;
+  border-bottom: 1px solid var(--title-line);
 }
 
 /* Estilo do ícone */
@@ -158,11 +163,8 @@ body.local-intropage-intro #page-header {
   color: var(--primary-color-dark);
 }
 
-/* Estilo do texto subsequente */
-.intropage-info-item span {
-  display: block;
-  color: var(--text-color-muted);
-  margin-top: 4px;
+.intropage-info-item {
+  flex: 3;
 }
 
 /* ---------------------------------------------------- BOTÃO NA SIDEBAR ------------------------------------------------------- */
@@ -178,23 +180,30 @@ body.local-intropage-intro #page-header {
 .intropage-button {
   display: inline-flex;
   align-items: center;
+  flex: 1;
   justify-content: space-between;
-  gap: 2rem;
+  max-height: max-content;
   background-color: var(--primary-color-dark);
   color: var(--highlight-color) !important;
   font-weight: bold;
   padding: 10px 15px;
-  font-size: 1.2em;
   text-decoration: none !important;
   border-radius: 5px;
-  transition: background-color 0.5s ease, transform 0.5s ease;
+  transition: background-color 1s ease-in-out, transform 0.1s ease-in-out;
 }
 
 /* Ícones dentro do botão */
 .intropage-button i {
-  font-size: 2.2em;
+  flex: 1;
+  font-size: 1.8em;
   line-height: 1;
-  padding: 0 0.5em;
+  padding: 0;
+}
+
+/* texto dentro do botão */
+.intropage-button span {
+  flex: 3;
+  font-size: 1em;
 }
 
 /* Botão: hover */
@@ -214,5 +223,9 @@ body.local-intropage-intro #page-header {
   .intropage-header {
     margin: 0;
     padding: 40px 20px;
+  }
+
+  .intropage-button-collection {
+    flex-direction: row;
   }
 }
