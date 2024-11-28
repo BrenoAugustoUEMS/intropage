@@ -191,7 +191,7 @@ body.local-intropage-intro #page-header {
   align-items: center;
   flex: 1;
   justify-content: space-between;
-  max-height: max-content;
+  min-height: 58px;
   background-color: var(--primary-color-dark);
   color: var(--highlight-color) !important;
   font-weight: bold;
