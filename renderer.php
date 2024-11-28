@@ -15,10 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * TODO describe file renderer
+ * renderer
  *
  * @package    local_intropage
- * @copyright  2024 YOUR NAME <your@email.com>
+ * @copyright  2024 Breno Augusto <brenoaugusto@uems.br>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
