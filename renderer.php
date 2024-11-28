@@ -24,50 +24,24 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+require_once(__DIR__ . '/lib.php'); // Importa as funções reutilizáveis.
+
 class local_intropage_renderer extends plugin_renderer_base {
     public function render_course_intro($course) {
-        global $DB;
 
-        // Prepara o contexto do curso.
-        $context = context_course::instance($course->id);
+        // Busca o nome da categoria associada ao curso.
+        $categoryname = local_intropage_get_category_name($course->category);
 
-        // Formata a data de início do curso.
-        $startdate = userdate($course->startdate);
-
-        // Busca os campos personalizados para este curso.
-        $customfield_handler = \core_customfield\handler::get_handler('core_course', 'course');
-        $customfields_data = $customfield_handler->get_instance_data($course->id, true);
-
-        // Busca informações de autoinscrição do curso.
-        $enrolmethod = $DB->get_record('enrol', [
-            'courseid' => $course->id,
-            'enrol' => 'self' // Filtra apenas pelo método de autoinscrição
-        ], 'enrolstartdate, enrolenddate');
-
-        // Verifica se há método de autoinscrição configurado.
-        if ($enrolmethod) {
-            // Converte as datas de timestamp para um formato legível ou define "Data não informada".
-            $enrolstart = $enrolmethod->enrolstartdate
-                ? userdate($enrolmethod->enrolstartdate, '%d/%m/%Y %H:%M')
-                : 'Data não informada';
-
-            $enrolend = $enrolmethod->enrolenddate
-                ? userdate($enrolmethod->enrolenddate, '%d/%m/%Y %H:%M')
-                : 'Data não informada';
-        } else {
-            // Caso não haja autoinscrição configurada.
-            $enrolstart = 'Data não informada';
-            $enrolend = 'Data não informada';
-        }
-
+        // Busca as datas de autoinscrição.
+        $enroldates = local_intropage_get_autoenrol_dates($course->id);
 
         // Prepara os dados para o template.
         $data = [
             'fullname' => $course->fullname,
             'summary' => format_text($course->summary),
-            'startdate' => $startdate,
-            'enrolstart' => $enrolstart,
-            'enrolend' => $enrolend,
+            'enrolstart' => $enroldates['enrolstart'],
+            'enrolend' => $enroldates['enrolend'],
+            'categoryname' => $categoryname,
         ];
 
         return $this->render_from_template('local_intropage/course_intro', $data);

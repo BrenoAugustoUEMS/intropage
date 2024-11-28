@@ -154,14 +154,16 @@ body.local-intropage-intro #page-header {
 
 /* Estilo do ícone */
 .intropage-info-header i {
-  font-size: 1.5em;
+  font-size: 1em;
   color: var(--primary-color-dark);
 }
 
 /* Estilo do strong */
 .intropage-info-header strong {
   font-weight: bold;
+  font-size: 0.8em;
   color: var(--primary-color-dark);
+  margin-bottom: -0.35em;
 }
 
 .intropage-info-text {

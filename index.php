@@ -8,7 +8,7 @@ $courseid = required_param('courseid', PARAM_INT);
 $context = context_course::instance($courseid);
 
 // Obtém os dados do curso.
-$course = $DB->get_record('course', ['id' => $courseid], 'id, fullname, summary, startdate', MUST_EXIST);
+$course = $DB->get_record('course', ['id' => $courseid], 'id, fullname, summary, category', MUST_EXIST);
 
 // Configura a página.
 $PAGE->requires->css('/local/intropage/styles.css');
