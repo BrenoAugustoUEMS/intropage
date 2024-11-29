@@ -93,6 +93,7 @@
     <div class="intropage-sidebar">
         <!-- Botão com URL externa -->
         <div class="intropage-button-collection">
+            <!-- Edital -->
             {{#edital_url}}
             <a href="{{edital_url}}" class="intropage-button bg-light border" target="_blank">
                 <span class="text-dark">Edital</span> <i class="fa-solid fa-newspaper text-dark"></i>
@@ -103,9 +104,17 @@
                 <span class="text-black-50">Edital Indisponível</span> <i class="fa-solid fa-newspaper text-black-50"></i>
             </div>
             {{/edital_url}}
-            <a href="https://www.uems.br" class="intropage-button" target="_blank">
-                <span>Inscreva-se</span><i class="fa-solid fa-right-from-bracket"></i>
+            <!-- Inscreva-se -->
+            {{#enroll_button_url}}
+            <a href="{{enroll_button_url}}" class="intropage-button" target="_blank">
+                <span>{{enroll_button_text}}</span><i class="{{enroll_button_icon}}"></i>
             </a>
+            {{/enroll_button_url}}
+            {{^enroll_button_url}}
+            <a href="{{enroll_button_url}}" class="intropage-button" target="_blank">
+                <span>{{enroll_button_text}}</span><i class="{{enroll_button_icon}}"></i>
+            </a>
+            {{/enroll_button_url}}
         </div>
 
         <div class="intropage-section m-0">

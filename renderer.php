@@ -45,6 +45,9 @@
  
          // 4. Busca a URL do campo Edital.
          $edital_url = local_intropage_get_edital_url($course->id);
+
+         // 5. Obtém os dados do botão de inscrição/acesso.
+         $enroll_button = local_intropage_get_enroll_button_data($course->id);
  
          // 7. Prepara os dados para o template.
          $data = [
@@ -55,6 +58,9 @@
              'categoryname' => $categoryname, // Nome da categoria do curso.
              'ods_numbers' => $ods_numbers, // Números do campo ODS.
              'edital_url' => $edital_url, // URL do edital.
+             'enroll_button_text' => $enroll_button['text'], // Texto do botão.
+             'enroll_button_icon' => $enroll_button['icon'], // Icone FontAwesome.
+             'enroll_button_url' => $enroll_button['url'], // URL do botão.
              'pluginbaseurl' => (new moodle_url('/local/intropage'))->out(), // URL base do plugin.
          ];
  

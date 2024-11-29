@@ -165,3 +165,67 @@ function local_intropage_is_user_enrolled($courseid, $userid = null) {
     // Verifica se o usuário está inscrito no contexto do curso.
     return is_enrolled($context, $userid, '', true);
 }
+
+/**
+ * Gera os dados do botão dinâmico de inscrição ou acesso ao curso.
+ *
+ * @param int $courseid O ID do curso.
+ * @param int|null $userid O ID do usuário (opcional, padrão é o usuário atual).
+ * @return array Contendo 'text' (texto do botão), 'icon' (ícone do botão), e 'url' (URL do botão).
+ */
+function local_intropage_get_enroll_button_data($courseid, $userid = null) {
+    global $DB, $USER;
+
+    // Usa o usuário atual se nenhum ID for passado.
+    if ($userid === null) {
+        $userid = $USER->id;
+    }
+
+    // Obtém o contexto do curso e o contexto da categoria.
+    $context_course = context_course::instance($courseid);
+    $course = $DB->get_record('course', ['id' => $courseid], 'category');
+    $context_category = $course ? context_coursecat::instance($course->category) : null;
+
+    // Verifica se o usuário está inscrito no curso.
+    $is_enrolled = local_intropage_is_user_enrolled($courseid, $userid);
+
+    // Verifica se o usuário é administrador ou gerente na categoria ou curso.
+    $is_manager = (
+        has_capability('moodle/course:update', $context_course, $userid) || // Capacidade de editar cursos.
+        ($context_category && has_capability('moodle/category:manage', $context_category, $userid)) // Gerente da categoria.
+    );
+
+    // Caso o usuário esteja inscrito ou seja administrador/gerente, mostre "Acesse".
+    if ($is_enrolled || $is_manager) {
+        return [
+            'text' => 'Acesse',
+            'icon' => 'fa-solid fa-right-to-bracket',
+            'url' => (new moodle_url('/course/view.php', ['id' => $courseid]))->out(),
+        ];
+    }
+
+    // Busca o método de autoinscrição no banco de dados.
+    $enrol = $DB->get_record('enrol', [
+        'courseid' => $courseid,
+        'enrol' => 'self', // Método de inscrição: autoinscrição.
+    ], 'id, status', IGNORE_MISSING);
+
+    if ($enrol->status==0) {
+        // Redireciona para a página de inscrição do curso com o enrolid.
+        return [
+            'text' => 'Inscreva-se',
+            'icon' => 'fa-solid fa-cloud-arrow-up',
+            'url' => (new moodle_url('/enrol/index.php', [
+                'id' => $courseid, // ID do curso.
+                'enrolid' => $enrol->id, // ID da instância de autoinscrição.
+            ]))->out(),
+        ];
+    }
+
+    // Caso não haja autoinscrição configurada.
+    return [
+        'text' => 'Indisponível',
+        'icon' => 'fa-solid fa-circle-xmark',
+        'url' => null,
+    ];
+}
