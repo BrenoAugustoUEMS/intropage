@@ -15,44 +15,42 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Exibe a página de introdução do curso
+ * Página de introdução de cursos.
  *
  * @package    local_intropage
  * @copyright  2024 Breno Augusto <brenoaugusto@uems.br>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
- require_once(__DIR__ . '/../../config.php');
- 
- // Obtém o parâmetro "courseid" da URL.
- $courseid = required_param('courseid', PARAM_INT);
- 
- // Verifica se o usuário está logado e tem permissão para visualizar o curso.
- $context = context_course::instance($courseid);
- 
- // Obtém os dados do curso.
- $course = $DB->get_record('course', ['id' => $courseid], 'id, fullname, summary, category', MUST_EXIST);
- 
- // Configura a página.
- $PAGE->requires->css('/local/intropage/styles.css');
- $PAGE->set_context($context);
- $PAGE->set_url(new moodle_url('/local/intropage/index.php', ['courseid' => $courseid]));
- $PAGE->set_title("Introdução a {$course->fullname}");
- 
- 
- // Tentativa de alterar o layout da página
- $PAGE->set_pagelayout('base');
- 
- // Adiciona uma classe CSS personalizada ao <body>.
- $PAGE->add_body_class('local-intropage-intro');
- 
- // Obtém o renderer do plugin.
- $output = $PAGE->get_renderer('local_intropage');
- 
- // Renderiza a introdução do curso usando o template.
- $coursehtml = $output->render_course_intro($course);
- 
- // Exibe a página.
- echo $OUTPUT->header();
- echo $coursehtml;
- echo $OUTPUT->footer();
+
+// Arquivo: local/intropage/index.php
+require_once(__DIR__ . '/../../config.php');
+require_once(__DIR__ . '/lib.php');
+
+// Obtém o parâmetro "courseid" da URL.
+$courseid = required_param('courseid', PARAM_INT);
+
+// Obtém os dados do curso.
+$course = local_intropage_get_course($courseid); // Função no lib.php
+
+// Configura o contexto do curso.
+$context = context_course::instance($courseid);
+
+// Configura a página.
+$PAGE->set_context($context);
+$PAGE->set_url(new moodle_url('/local/intropage/index.php', ['courseid' => $courseid]));
+$PAGE->set_title("Introdução a {$course->fullname}");
+$PAGE->set_pagelayout('base'); // Layout simples para a página.
+$PAGE->add_body_class('local-intropage-intro'); // Injeta Classe no body para isolar estilos nessa página
+$PAGE->requires->css('/local/intropage/styles.css');
+
+// Obtém o renderer do plugin.
+$output = $PAGE->get_renderer('local_intropage');
+
+// Renderiza a introdução do curso usando o template.
+$coursehtml = $output->render_course_intro($course);
+
+// Exibe a página.
+echo $OUTPUT->header();
+echo $coursehtml;
+echo $OUTPUT->footer();

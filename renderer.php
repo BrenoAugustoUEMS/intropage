@@ -22,38 +22,44 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
+ defined('MOODLE_INTERNAL') || die();
 
-require_once(__DIR__ . '/lib.php'); // Importa as funções reutilizáveis.
-
-class local_intropage_renderer extends plugin_renderer_base {
-    public function render_course_intro($course) {
-
-        // Busca o nome da categoria associada ao curso.
-        $categoryname = local_intropage_get_category_name($course->category);
-
-        // Busca as datas de autoinscrição.
-        $enroldates = local_intropage_get_autoenrol_dates($course->id);
-
-        // Busca os números do campo ODS.
-        $ods_numbers = local_intropage_get_ods_field($course->id);
-
-        // Busca a URL do campo Edital.
-        $edital_url = local_intropage_get_edital_url($course->id);
-
-
-        // Prepara os dados para o template.
-        $data = [
-            'fullname' => $course->fullname,
-            'summary' => format_text($course->summary),
-            'enrolstart' => $enroldates['enrolstart'],
-            'enrolend' => $enroldates['enrolend'],
-            'categoryname' => $categoryname,
-            'ods_numbers' => $ods_numbers,
-            'edital_url' => $edital_url,
-            'pluginbaseurl' => (new moodle_url('/local/intropage'))->out(),
-        ];
-
-        return $this->render_from_template('local_intropage/course_intro', $data);
-    }
-}
+ require_once(__DIR__ . '/lib.php'); // Importa as funções reutilizáveis.
+ 
+ class local_intropage_renderer extends plugin_renderer_base {
+     /**
+      * Renderiza a introdução do curso.
+      *
+      * @param stdClass $course Dados do curso.
+      * @return string HTML da introdução renderizada.
+      */
+     public function render_course_intro($course) {
+         // 1. Busca o nome da categoria associada ao curso.
+         $categoryname = local_intropage_get_category_name($course->category);
+ 
+         // 2. Busca as datas de autoinscrição.
+         $enroldates = local_intropage_get_autoenrol_dates($course->id);
+ 
+         // 3. Busca os números do campo ODS.
+         $ods_numbers = local_intropage_get_ods_field($course->id);
+ 
+         // 4. Busca a URL do campo Edital.
+         $edital_url = local_intropage_get_edital_url($course->id);
+ 
+         // 7. Prepara os dados para o template.
+         $data = [
+             'fullname' => $course->fullname, // Nome completo do curso.
+             'summary' => format_text($course->summary), // Resumo do curso.
+             'enrolstart' => $enroldates['enrolstart'], // Data de início da autoinscrição.
+             'enrolend' => $enroldates['enrolend'], // Data de término da autoinscrição.
+             'categoryname' => $categoryname, // Nome da categoria do curso.
+             'ods_numbers' => $ods_numbers, // Números do campo ODS.
+             'edital_url' => $edital_url, // URL do edital.
+             'pluginbaseurl' => (new moodle_url('/local/intropage'))->out(), // URL base do plugin.
+         ];
+ 
+         // Renderiza o conteúdo usando o template Mustache.
+         return $this->render_from_template('local_intropage/course_intro', $data);
+     }
+ }
+ 
