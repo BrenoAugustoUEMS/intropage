@@ -46,14 +46,30 @@ function local_intropage_get_course($courseid) {
  * @param int $categoryid O ID da categoria do curso.
  * @return string O nome da categoria ou "Categoria não encontrada".
  */
-function local_intropage_get_category_name($categoryid) {
+function local_intropage_get_category($categoryid) {
     global $DB;
 
     // Busca a categoria pelo ID.
-    $category = $DB->get_record('course_categories', ['id' => $categoryid], 'id, name', IGNORE_MISSING);
+    $category = $DB->get_record('course_categories', ['id' => $categoryid], 'id, name, path', IGNORE_MISSING);
 
-    // Retorna o nome da categoria ou "Categoria não encontrada".
-    return $category ? $category->name : 'Categoria não encontrada';
+    if ($category) {
+        // Divide o caminho (path) para obter as IDs das categorias.
+        $pathids = explode('/', trim($category->path, '/'));
+
+        // Busca o nome de todas as categorias no caminho.
+        $categories = [];
+        foreach ($pathids as $catid) {
+            $cat = $DB->get_record('course_categories', ['id' => $catid], 'name', IGNORE_MISSING);
+            if ($cat) {
+                $categories[] = $cat->name;
+            }
+        }
+
+        // Retorna as categorias formatadas com " > " entre elas.
+        return implode(' > ', $categories);
+    }
+
+    return 'Categoria não encontrada';
 }
 
 /**

@@ -35,7 +35,7 @@
       */
      public function render_course_intro($course) {
          // 1. Busca o nome da categoria associada ao curso.
-         $categoryname = local_intropage_get_category_name($course->category);
+         $categoryname = local_intropage_get_category($course->category);
  
          // 2. Busca as datas de autoinscrição.
          $enroldates = local_intropage_get_autoenrol_dates($course->id);
