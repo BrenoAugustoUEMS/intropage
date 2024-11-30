@@ -24,7 +24,7 @@
 }}
 
 <div class="intropage-header">
-    <h1>{{fullname}}</h1>
+    <h1>{{course.fullname}}</h1>
 </div>
 
 <div class="intropage-content">
@@ -45,11 +45,11 @@
                 <div class="d-flex flex-row flex-wrap intropage-enroll-date px-3 pt-3">
                     <div class="d-flex align-items-center">
                         <span class="text-muted mx-2 mb-2">De:</span>
-                        <strong class="h3 mr-5 text-nowrap">{{enrolstart}}</strong>
+                        <strong class="h3 mr-5 text-nowrap">{{enrol.enrolstart}}</strong>
                     </div>
                     <div class="d-flex align-items-center">
                         <span class="text-muted mx-2 mb-2">Até:</span>
-                        <strong class="h3">{{enrolend}}</strong>
+                        <strong class="h3">{{enrol.enrolend}}</strong>
                     </div>
                 </div>
 
@@ -67,7 +67,7 @@
                 <h3>Detalhes</h3>
             </div>
             <div class="intropage-summary">
-                {{{summary}}}
+                {{{course.summary}}}
             </div>
         </div>
         <!-- Selos da ODS -->
@@ -76,14 +76,14 @@
                 <h3>Objetivos de Desenvolvimento Sustentável (ODS)</h3>
             </div>
             <div class="intropage-ods-badges">
-                {{#ods_numbers}}
+                {{#ods}}
                     <div class="ods-badge">
-                        <img src="{{pluginbaseurl}}/pix/sdg/SDG-{{.}}.svg" alt="ODS {{.}}" class="ods-badge">
+                        <img src="{{plugin.baseurl}}/pix/sdg/SDG-{{.}}.svg" alt="ODS {{.}}" class="ods-badge">
                     </div>
-                {{/ods_numbers}}
-                {{^ods_numbers}}
+                {{/ods}}
+                {{^ods}}
                     <p>Nenhum ODS informado.</p>
-                {{/ods_numbers}}
+                {{/ods}}
             </div>
         </div>
     </div>
@@ -94,27 +94,27 @@
         <!-- Botão com URL externa -->
         <div class="intropage-button-collection">
             <!-- Edital -->
-            {{#edital_url}}
-            <a href="{{edital_url}}" class="intropage-button bg-light border" target="_blank">
+            {{#edital.url}}
+            <a href="{{edital.url}}" class="intropage-button bg-light border" target="_blank">
                 <span class="text-dark">Edital</span> <i class="fa-solid fa-newspaper text-dark"></i>
             </a>
-            {{/edital_url}}
-            {{^edital_url}}
+            {{/edital.url}}
+            {{^edital.url}}
             <div class="intropage-button bg-light border">
                 <span class="text-black-50">Edital Indisponível</span> <i class="fa-solid fa-newspaper text-black-50"></i>
             </div>
-            {{/edital_url}}
+            {{/edital.url}}
             <!-- Inscreva-se -->
-            {{#enroll_button_url}}
-            <a href="{{enroll_button_url}}" class="intropage-button" target="_blank">
-                <span>{{enroll_button_text}}</span><i class="{{enroll_button_icon}}"></i>
+            {{#enrol.button.url}}
+            <a href="{{enrol.button.url}}" class="intropage-button" target="_blank">
+                <span>{{enrol.button.text}}</span><i class="{{enrol.button.icon}}"></i>
             </a>
-            {{/enroll_button_url}}
-            {{^enroll_button_url}}
-            <a href="{{enroll_button_url}}" class="intropage-button" target="_blank">
-                <span>{{enroll_button_text}}</span><i class="{{enroll_button_icon}}"></i>
+            {{/enrol.button.url}}
+            {{^enrol.button.url}}
+            <a href="{{enrol.button.url}}" class="intropage-button" target="_blank">
+                <span>{{enrol.button.text}}</span><i class="{{enrol.button.icon}}"></i>
             </a>
-            {{/enroll_button_url}}
+            {{/enrol.button.url}}
         </div>
 
         <div class="intropage-section m-0">
@@ -124,7 +124,7 @@
                     <i class="fa-solid fa-layer-group"></i>
                     <strong>Categoria:</strong>
                 </div>
-                <p class="intropage-info-text">{{categoryname}}</p>
+                <p class="intropage-info-text">{{course.categoryname}}</p>
             </div>
              <!-- Ações -->
             <div class="intropage-info-item">

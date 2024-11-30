@@ -51,18 +51,28 @@
  
          // 7. Prepara os dados para o template.
          $data = [
-             'fullname' => $course->fullname, // Nome completo do curso.
-             'summary' => format_text($course->summary), // Resumo do curso.
-             'enrolstart' => $enroldates['enrolstart'], // Data de início da autoinscrição.
-             'enrolend' => $enroldates['enrolend'], // Data de término da autoinscrição.
-             'categoryname' => $categoryname, // Nome da categoria do curso.
-             'ods_numbers' => $ods_numbers, // Números do campo ODS.
-             'edital_url' => $edital_url, // URL do edital.
-             'enroll_button_text' => $enroll_button['text'], // Texto do botão.
-             'enroll_button_icon' => $enroll_button['icon'], // Icone FontAwesome.
-             'enroll_button_url' => $enroll_button['url'], // URL do botão.
-             'pluginbaseurl' => (new moodle_url('/local/intropage'))->out(), // URL base do plugin.
-         ];
+            'course' => [
+                'fullname' => $course->fullname,
+                'summary' => format_text($course->summary),
+                'categoryname' => $categoryname,
+            ],
+            'enrol' => [
+                'enrolstart' => $enroldates['enrolstart'],
+                'enrolend' => $enroldates['enrolend'],
+                'button' => [
+                    'text' => $enroll_button['text'],
+                    'icon' => $enroll_button['icon'],
+                    'url' => $enroll_button['url'],
+                ],
+            ],
+            'ods' => $ods_numbers,
+            'edital' => [
+                'url' => $edital_url,
+            ],
+            'plugin' => [
+                'baseurl' => (new moodle_url('/local/intropage'))->out(),
+            ],
+        ];
  
          // Renderiza o conteúdo usando o template Mustache.
          return $this->render_from_template('local_intropage/course_intro', $data);
