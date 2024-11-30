@@ -40,16 +40,16 @@
          // 2. Busca as datas de autoinscrição.
          $enroldates = local_intropage_get_autoenrol_dates($course->id);
  
-         // 3. Busca os números do campo ODS.
+         // 3. Busca os valores dos campos personalizados.
          $ods_numbers = local_intropage_get_ods_field($course->id);
- 
-         // 4. Busca a URL do campo Edital.
          $edital_url = local_intropage_get_edital_url($course->id);
+         $actions = local_intropage_get_actions_field($course->id);
+         $target = local_intropage_get_target_field($course->id);
 
-         // 5. Obtém os dados do botão de inscrição/acesso.
+         // 4. Obtém os dados do botão de inscrição/acesso.
          $enroll_button = local_intropage_get_enroll_button_data($course->id);
  
-         // 7. Prepara os dados para o template.
+         // 5. Prepara os dados para o template.
          $data = [
             'course' => [
                 'fullname' => $course->fullname,
@@ -65,9 +65,11 @@
                     'url' => $enroll_button['url'],
                 ],
             ],
-            'ods' => $ods_numbers,
-            'edital' => [
-                'url' => $edital_url,
+            'customfields' => [
+                'ods' => $ods_numbers,
+                'edital' => ['url' => $edital_url,],
+                'actions' => $actions,
+                'target' => $target,
             ],
             'plugin' => [
                 'baseurl' => (new moodle_url('/local/intropage'))->out(),

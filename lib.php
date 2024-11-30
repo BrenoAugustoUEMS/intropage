@@ -83,6 +83,33 @@ function local_intropage_get_autoenrol_dates($courseid) {
 }
 
 /**
+ * Obtém todos os campos personalizados de um curso.
+ *
+ * @param int $courseid O ID do curso.
+ * @return array Um array associativo onde o nome curto do campo é a chave e o valor é o valor do campo.
+ */
+function local_intropage_get_all_custom_fields($courseid) {
+    // Obtém o manipulador de campos personalizados para cursos.
+    $customfield_handler = \core_customfield\handler::get_handler('core_course', 'course');
+
+    // Obtém os dados personalizados para este curso.
+    $customfields_data = $customfield_handler->get_instance_data($courseid, true);
+
+    // Inicializa um array para armazenar os campos personalizados.
+    $customfields = [];
+
+    // Itera pelos campos personalizados e preenche o array com shortname => valor.
+    foreach ($customfields_data as $data) {
+        $shortname = $data->get_field()->get('shortname'); // Nome curto do campo.
+        $value = $data->get_value(); // Valor do campo.
+        $customfields[$shortname] = $value;
+    }
+
+    return $customfields;
+}
+
+
+/**
  * Obtém e processa o campo personalizado "ods" associado a um curso.
  * Extrai os números e retorna apenas os que estão no intervalo de 1 a 17.
  *
@@ -90,26 +117,18 @@ function local_intropage_get_autoenrol_dates($courseid) {
  * @return array Um array contendo os números de 1 a 17 extraídos do campo "ods".
  */
 function local_intropage_get_ods_field($courseid) {
-    // Obtém o manipulador de campos personalizados para cursos.
-    $customfield_handler = \core_customfield\handler::get_handler('core_course', 'course');
+    // Obtém todos os campos personalizados do curso.
+    $customfields = local_intropage_get_all_custom_fields($courseid);
 
-    // Obtém os dados personalizados para este curso.
-    $customfields_data = $customfield_handler->get_instance_data($courseid, true);
+    // Verifica se o campo "ods" existe.
+    if (isset($customfields['ods'])) {
+        // Divide a string em partes usando a vírgula como delimitador.
+        $ods_parts = explode(',', $customfields['ods']);
 
-    // Itera pelos campos para encontrar o campo "ods".
-    foreach ($customfields_data as $data) {
-        if ($data->get_field()->get('shortname') === 'ods') {
-            // Obtém o valor do campo "ods" como string.
-            $ods_value = $data->get_value();
-
-            // Divide a string em partes usando a vírgula como delimitador.
-            $ods_parts = explode(',', $ods_value);
-
-            // Remove espaços extras, converte para inteiros e filtra os números válidos (1-17).
-            return array_filter(array_map('intval', array_map('trim', $ods_parts)), function($num) {
-                return $num >= 1 && $num <= 17;
-            });
-        }
+        // Remove espaços extras, converte para inteiros e filtra os números válidos (1-17).
+        return array_filter(array_map('intval', array_map('trim', $ods_parts)), function($num) {
+            return $num >= 1 && $num <= 17;
+        });
     }
 
     // Retorna um array vazio se o campo "ods" não for encontrado.
@@ -123,22 +142,37 @@ function local_intropage_get_ods_field($courseid) {
  * @return string|null A URL do edital ou NULL se o campo não estiver configurado.
  */
 function local_intropage_get_edital_url($courseid) {
-    // Obtém o manipulador de campos personalizados para cursos.
-    $customfield_handler = \core_customfield\handler::get_handler('core_course', 'course');
+    // Obtém todos os campos personalizados do curso.
+    $customfields = local_intropage_get_all_custom_fields($courseid);
 
-    // Obtém os dados personalizados para este curso.
-    $customfields_data = $customfield_handler->get_instance_data($courseid, true);
-
-    // Itera pelos campos para encontrar o campo "edital_url".
-    foreach ($customfields_data as $data) {
-        if ($data->get_field()->get('shortname') === 'edital_url') {
-            return $data->get_value(); // Retorna o valor do campo "edital_url".
-        }
-    }
-
-    // Retorna NULL se o campo "edital_url" não for encontrado.
-    return null;
+    // Retorna o valor do campo "edital_url", se existir.
+    return $customfields['edital_url'] ?? null;
 }
+
+/**
+ * Obtém o valor do campo personalizado "actions" de um curso.
+ *
+ * @param int $courseid O ID do curso.
+ * @return string|null O valor do campo "actions" ou null se não estiver configurado.
+ */
+function local_intropage_get_actions_field($courseid) {
+    $customfields = local_intropage_get_all_custom_fields($courseid);
+
+    return $customfields['actions'] ?? null;
+}
+
+/**
+ * Obtém o valor do campo personalizado "target" de um curso.
+ *
+ * @param int $courseid O ID do curso.
+ * @return string|null O valor do campo "target" ou null se não estiver configurado.
+ */
+function local_intropage_get_target_field($courseid) {
+    $customfields = local_intropage_get_all_custom_fields($courseid);
+
+    return $customfields['target'] ?? null;
+}
+
 
 ////////////////////////////////////////////////////////
 // Funções auxiliares para manipulação de inscrições //

@@ -76,14 +76,14 @@
                 <h3>Objetivos de Desenvolvimento Sustentável (ODS)</h3>
             </div>
             <div class="intropage-ods-badges">
-                {{#ods}}
+                {{#customfields.ods}}
                     <div class="ods-badge">
                         <img src="{{plugin.baseurl}}/pix/sdg/SDG-{{.}}.svg" alt="ODS {{.}}" class="ods-badge">
                     </div>
-                {{/ods}}
-                {{^ods}}
+                {{/customfields.ods}}
+                {{^customfields.ods}}
                     <p>Nenhum ODS informado.</p>
-                {{/ods}}
+                {{/customfields.ods}}
             </div>
         </div>
     </div>
@@ -94,16 +94,16 @@
         <!-- Botão com URL externa -->
         <div class="intropage-button-collection">
             <!-- Edital -->
-            {{#edital.url}}
+            {{#customfields.edital.url}}
             <a href="{{edital.url}}" class="intropage-button bg-light border" target="_blank">
                 <span class="text-dark">Edital</span> <i class="fa-solid fa-newspaper text-dark"></i>
             </a>
-            {{/edital.url}}
-            {{^edital.url}}
+            {{/customfields.edital.url}}
+            {{^customfields.edital.url}}
             <div class="intropage-button bg-light border">
                 <span class="text-black-50">Edital Indisponível</span> <i class="fa-solid fa-newspaper text-black-50"></i>
             </div>
-            {{/edital.url}}
+            {{/customfields.edital.url}}
             <!-- Inscreva-se -->
             {{#enrol.button.url}}
             <a href="{{enrol.button.url}}" class="intropage-button" target="_blank">
@@ -132,7 +132,7 @@
                     <i class="fa-solid fa-check"></i>
                     <strong>Ações Contempladas:</strong>
                 </div>
-                <p class="intropage-info-text">Programa, Projeto, Curso e Evento</p>
+                <p class="intropage-info-text">{{customfields.actions}}</p>
             </div>
             <!-- Público-alvo -->
             <div class="intropage-info-item">
@@ -140,7 +140,7 @@
                     <i class="fa-solid fa-users"></i>
                     <strong>Público-Alvo:</strong>
                 </div>
-                <p class="intropage-info-text">Professores, Técnicos e Alunos</p>
+                <p class="intropage-info-text">{{customfields.target}}</p>
             </div>
         </div>
     </div>
