@@ -25,6 +25,7 @@
  defined('MOODLE_INTERNAL') || die();
 
  require_once(__DIR__ . '/lib.php'); // Importa as funções reutilizáveis.
+
  
  class local_intropage_renderer extends plugin_renderer_base {
      /**
