@@ -41,8 +41,8 @@ Essa página exibe informações importantes antes de o usuário acessar o curso
       - **Tipo de campo:** Texto curto
       - **Descrição:**
         Insira números representando os ODS, separados por vírgulas (exemplo: 1,4,13).
-        Cada número corresponde a um Objetivo de Desenvolvimento Sustentável. Os números válidos são de 1 a 17.
-      - **Obrigatório:** Opcional (deixe desmarcado se o curso não tiver ODS definidos).
+        Cada número corresponde a um Objetivo de Desenvolvimento Sustentável. Os números válidos são de 1 a 17. Para saber mais sobre as ODS, acesse: https://brasil.un.org/pt-br/sdgs
+      - **Obrigatório:**
       - **Visibilidade:** Marque como visível para todos.
       - **Exemplo de valor:** 3,8,11
 
