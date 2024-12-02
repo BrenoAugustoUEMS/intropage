@@ -42,9 +42,7 @@ Essa página exibe informações importantes antes de o usuário acessar o curso
       - **Descrição:**
         Insira números representando os ODS, separados por vírgulas (exemplo: 1,4,13).
         Cada número corresponde a um Objetivo de Desenvolvimento Sustentável. Os números válidos são de 1 a 17. Para saber mais sobre as ODS, acesse: https://brasil.un.org/pt-br/sdgs
-      - **Obrigatório:**
-      - **Visibilidade:** Marque como visível para todos.
-      - **Exemplo de valor:** 3,8,11
+      - **Valor Padrão:** 4
 
   2.  **Edital URL**
 
@@ -53,32 +51,23 @@ Essa página exibe informações importantes antes de o usuário acessar o curso
       - **Tipo de campo:** Texto curto
       - **Descrição:**
         Insira o link para o edital do curso.
-        Deve ser uma URL válida, começando com http:// ou https://.
-      - **Obrigatório:** Opcional (deixe desmarcado se o curso não tiver edital).
-      - **Visibilidade:** Marque como visível para todos.
-      - **Exemplo de valor:** https://www.exemplo.com/edital
+        exemplo: https://www.uems.br/Editais
 
   3.  **Público-Alvo**
 
       - **Nome do Campo:** Público-Alvo
       - **Nome curto:** target
-      - **Tipo de campo:** Texto curto
+      - **Tipo de campo:** Texto
       - **Descrição:**
         Insira o público-alvo do curso (ex.: "Professores, Estudantes, Técnicos").
-      - **Obrigatório:** Opcional.
-      - **Visibilidade:** Marque como visível para todos.
-      - **Exemplo de valor:** Estudantes de graduação e pós-graduação
 
   4.  **Ações Contempladas**
       - **Nome do Campo:** Ações Contempladas
       - **Nome curto:** actions
-      - **Tipo de campo:** Texto curto
+      - **Tipo de campo:** Texto
       - **Descrição:**
         Descreva brevemente as ações contempladas no curso.
-        Use uma lista separada por vírgulas (ex.: "Palestras, Workshops, Certificação").
-      - **Obrigatório:** Opcional.
-      - **Visibilidade:** Marque como visível para todos.
-      - **Exemplo de valor:** Palestras, Workshops, Sessões práticas
+        Use uma lista separada por vírgulas (ex.: "Programa, Cursos, Palestras").
 
 **Customização no Tema:**
 

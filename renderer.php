@@ -68,8 +68,8 @@
             'customfields' => [
                 'ods' => $ods_numbers,
                 'edital' => ['url' => $edital_url,],
-                'actions' => $actions,
-                'target' => $target,
+                'actions' => format_text($actions),
+                'target' => format_text($target),
             ],
             'plugin' => [
                 'baseurl' => (new moodle_url('/local/intropage'))->out(),
