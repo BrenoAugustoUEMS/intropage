@@ -95,7 +95,7 @@ Essa página exibe informações importantes antes de o usuário acessar o curso
 
    - Tabela do banco de dados própria.
 
-2. ## **Outros campos**
+2. **Outros campos**
 
 ---
 
