@@ -53,7 +53,7 @@
          $data = [
             'course' => [
                 'fullname' => $course->fullname,
-                'summary' => format_text($course->summary),
+                'summary' => $course->summary,
                 'categoryname' => $categoryname,
             ],
             'enrol' => [
@@ -68,8 +68,8 @@
             'customfields' => [
                 'ods' => $ods_numbers,
                 'edital' => ['url' => $edital_url,],
-                'actions' => format_text($actions),
-                'target' => format_text($target),
+                'actions' => strip_tags($actions),
+                'target' => strip_tags($target),
             ],
             'plugin' => [
                 'baseurl' => (new moodle_url('/local/intropage'))->out(),
