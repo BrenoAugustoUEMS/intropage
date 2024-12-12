@@ -173,6 +173,7 @@ function local_intropage_get_edital_url($courseid) {
  */
 function local_intropage_get_actions_field($courseid) {
     $customfields = local_intropage_get_all_custom_fields($courseid);
+    $customfields['actions'] = strip_tags($customfields['actions']);
 
     return $customfields['actions'] ?? null;
 }
@@ -185,6 +186,7 @@ function local_intropage_get_actions_field($courseid) {
  */
 function local_intropage_get_target_field($courseid) {
     $customfields = local_intropage_get_all_custom_fields($courseid);
+    $customfields['target'] = strip_tags($customfields['target']);
 
     return $customfields['target'] ?? null;
 }
